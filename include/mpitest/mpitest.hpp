@@ -6,7 +6,9 @@
 
 #ifndef MPITEST_NO_MAIN
 int main() {
+    MPI_Init(NULL, NULL);
     mpitest::Test::run_all();
+    MPI_Finalize();
     return 0;
 }
 #endif

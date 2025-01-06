@@ -48,6 +48,6 @@ inline std::string recv_string(const int rank) {
     return "";
 }
 
-} // namespace mpitest
+} // namespace mpitest::mpihelpers
 
 #endif // _MPITEST_COMMON_HPP_

@@ -59,6 +59,6 @@ class Clear : public Formatter {
     Clear() : Formatter("\033[0m") {}
 };
 
-} // namespace mpitest
+} // namespace mpitest::format
 
 #endif // _MPITEST_IOFORMAT_HPP_

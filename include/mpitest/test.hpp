@@ -47,7 +47,6 @@ class Test {
      * means it takes ownership of the MPI lifecycle.
      */
     static void run_all() {
-        MPI_Init(NULL, NULL);
         if (mpihelpers::comm_rank() == 0) {
             std::cout << "Testing (world_size = " << mpihelpers::comm_size()
                       << "):" << std::endl;
@@ -64,7 +63,8 @@ class Test {
         }
 
         if (mpihelpers::comm_rank() == 0) {
-            std::cout << format::Clear() << std::endl << "Summary:" << std::endl;
+            std::cout << format::Clear() << std::endl
+                      << "Summary:" << std::endl;
             for (auto& [suite, total] : m_total_count) {
                 if (m_passed_count[suite] == total) {
                     std::cout << format::Green();
@@ -72,10 +72,10 @@ class Test {
                     std::cout << format::Red();
                 }
                 std::cout << "   - " << suite << " " << m_passed_count[suite]
-                          << "/" << total << " passed" << format::Clear() << std::endl;
+                          << "/" << total << " passed" << format::Clear()
+                          << std::endl;
             }
         }
-        MPI_Finalize();
     }
 
     /**
@@ -114,15 +114,16 @@ class Test {
                 std::cout << "   - " << test_name() << ": " << format::Green()
                           << " passed" << format::Clear() << std::endl;
             } else {
-                std::cout << "   - " << test_name() << ": " << format::Red() << "failed"
-                          << format::Clear() << std::endl;
+                std::cout << "   - " << test_name() << ": " << format::Red()
+                          << "failed" << format::Clear() << std::endl;
             }
         }
         return m_passed;
     }
 
     /**
-     * @brief Forces the test to be marked as failed (local to the rank that calls it).
+     * @brief Forces the test to be marked as failed (local to the rank that
+     * calls it).
      */
     void fail() { m_passed = false; }
 
@@ -140,8 +141,9 @@ class Test {
  * @param suite The suite name.
  * @param name  The test name.
  *
- * This macro creates a derived class of @c mpitest::Test, registers it automatically,
- * and defines its @c test() method, which you can implement inline.
+ * This macro creates a derived class of @c mpitest::Test, registers it
+ * automatically, and defines its @c test() method, which you can implement
+ * inline.
  */
 #define TEST(suite, name)                                                      \
     namespace mpitest::suite {                                                 \

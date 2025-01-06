@@ -114,8 +114,8 @@ class LocalAssertion : public BaseAssertion {
                       << "::" << line() << ")" << " FAILED." << std::endl;
             auto msg = message();
             if (msg.size() > 0) {
-                std::cout << "      - rank " << mpihelpers::comm_rank() << ": " << msg
-                          << std::endl;
+                std::cout << "      - rank " << mpihelpers::comm_rank() << ": "
+                          << msg << std::endl;
             }
             std::cout << format::Clear() << std::flush;
         }
