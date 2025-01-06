@@ -1,4 +1,4 @@
-# MPI-Unit-Test
+# MPITest
 Simple C++ header-only unit testing framework for MPI codes. Contributions welcome.
 
 ## Building
